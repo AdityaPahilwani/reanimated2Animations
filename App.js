@@ -1,13 +1,11 @@
 import BottomSheet from "./BottomSheet";
-import AccordionExample from "./Components/Accordion";
-import ClassicIpod from "./classicIpod/index";
+import AccordionExample from "./Screens/AccordionExample/index";
+import SwipeableExample from "./Screens/SwipeableExample/index";
+import ClassicIpod from "./Screens/classicIpod/index";
+import DarkMode from "./Screens/darkMode";
+import Swipeable from "./Components/Swipeable/Swipeable";
 import React from "react";
-import { StatusBar } from "react-native";
+
 export default function App(props) {
-  return (
-    <>
-      <StatusBar barStyle="light-content" />
-      <ClassicIpod />
-    </>
-  );
+  return <SwipeableExample />;
 }
