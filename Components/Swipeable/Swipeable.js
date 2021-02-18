@@ -7,7 +7,7 @@ import Swipe from "react-native-gesture-handler/Swipeable";
 
 const Swipeable = () => {
   return (
-    <View style={{marginVertical:10}}>
+    <View style={{marginVertical:10,overflow:'hidden'}}>
       <Swipe
         renderLeftActions={(progress, dragX) => (
           <RenderLeftActions progress={progress} dragX={dragX} />

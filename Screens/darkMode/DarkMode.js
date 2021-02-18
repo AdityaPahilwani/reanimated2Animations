@@ -5,14 +5,7 @@ import Animated, {
   withTiming,
   Easing,
 } from "react-native-reanimated";
-import {
-  View,
-  Text,
-  Pressable,
-  Dimensions,
-  ScrollView,
-  StatusBar,
-} from "react-native";
+import { View, Text, Pressable, Dimensions, ScrollView } from "react-native";
 import styles from "./style";
 import { lorem } from "../../Constants/constant";
 const DarkMode = () => {
@@ -42,12 +35,7 @@ const DarkMode = () => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <StatusBar barStyle="default" />
-
         <Animated.View style={[styles.container, animateContainer]}>
-          <Animated.Text style={[styles.lorem, animateText]}>
-            [{lorem},{lorem},{lorem}]
-          </Animated.Text>
           <Pressable
             style={styles.button}
             onPress={() => {
@@ -56,6 +44,9 @@ const DarkMode = () => {
           >
             <Text style={styles.buttonText}>Dark mode</Text>
           </Pressable>
+          <Animated.Text style={[styles.lorem, animateText]}>
+            [{lorem},{lorem}]
+          </Animated.Text>
         </Animated.View>
       </ScrollView>
     </View>
