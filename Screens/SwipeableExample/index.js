@@ -5,7 +5,6 @@ const SwipeableExample = () => {
   return (
     <ScrollView
       contentContainerStyle={{
-        paddingTop: 20,
         flexGrow: 1,
         paddingHorizontal: 10,
       }}

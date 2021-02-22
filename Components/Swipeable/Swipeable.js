@@ -26,7 +26,6 @@ const Swipeable = () => {
 const RenderLeftActions = (props) => {
   let { progress, dragX } = props;
   const inputRange = [-0, 0, 65];
-  const diffClamp = Animated.diffClamp(dragX, 0, 65);
   const scale = dragX.interpolate({
     inputRange: inputRange,
     outputRange: [0, 0, 1],
