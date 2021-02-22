@@ -28,8 +28,19 @@ const Card = ({ item, index, scrollX }) => {
       outputRange,
       Extrapolate.CLAMP
     );
+    const rotateY = interpolate(
+      scrollX.value,
+      inputRange,
+      ["0", "0", `${Math.PI / 2}`],
+      Extrapolate.CLAMP
+    );
+
     return {
-      transform: [{ scale: deriveScale }],
+      transform: [
+        { scale: deriveScale },
+        { rotateY: `${rotateY} rad` },
+        { perspective: 800 },
+      ],
     };
   });
 
@@ -47,7 +58,7 @@ const Card = ({ item, index, scrollX }) => {
       Extrapolate.CLAMP
     );
     return {
-      transform: [{ translateX: translateX },{translateY:translateY }],
+      transform: [{ translateX: translateX }, { translateY: translateY }],
     };
   });
 
@@ -55,7 +66,7 @@ const Card = ({ item, index, scrollX }) => {
     <View>
       <Animated.View style={[styles.imageContainer, imageStyle]}>
         <Image source={{ uri: item.image }} style={styles.image} />
-        <Animated.View style={[styles.absoluteContainer,textStyle]}>
+        <Animated.View style={[styles.absoluteContainer, textStyle]}>
           <Text numberOfLines={1} style={styles.text}>
             {item.title}
           </Text>
@@ -70,7 +81,7 @@ const styles = StyleSheet.create({
     height: imageHeight,
     width: imageWidth,
     marginHorizontal: marginW,
-    borderRadius: 20,
+    borderRadius: 10,
     overflow: "hidden",
   },
   image: { height: "100%", width: "100%", resizeMode: "cover" },

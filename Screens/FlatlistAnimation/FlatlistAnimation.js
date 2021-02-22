@@ -24,6 +24,7 @@ const FlatlistAnimation = () => {
         justifyContent: "center",
         alignItems: "center",
         flexGrow: 1,
+        backgroundColor:'white'
       }}
       data={data}
       keyExtractor={(item) => item.key}
