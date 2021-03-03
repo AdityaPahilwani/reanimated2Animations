@@ -69,7 +69,6 @@ const Skeleton = (props) => {
             end={{ x: 1, y: 0 }}
             style={[
               styles.skeletonTileContainer,
-              { marginTop: 0, position: "absolute", top: 0, left: 0 },
               animateImageContainer(styles.skeletonTileContainer.width),
             ]}
           />
@@ -82,8 +81,6 @@ const Skeleton = (props) => {
             end={{ x: 1, y: 0 }}
             style={[
               styles.skeletonDescriptionContainer,
-              { marginTop: 0 },
-              StyleSheet.absoluteFill,
               animateImageContainer(styles.skeletonDescriptionContainer.width),
             ]}
           />
