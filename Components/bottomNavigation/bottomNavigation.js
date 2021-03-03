@@ -120,7 +120,7 @@ const BottomNavigationTapPress = (props) => {
       >
         {icons.map((item, index) => {
           return (
-            <View style={styles.itemContainer} item={`${item.name} unique`}>
+            <View style={styles.itemContainer} key={`${item.name} unique unique unique `}>
               <Animated.View
                 style={[styles.iconContainer, animateIconContainer({ index })]}
               >
