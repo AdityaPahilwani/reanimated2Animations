@@ -48,7 +48,6 @@ export default function BottomSheet(props) {
           }
 
           toggleBottom.value = !toggleBottom.value;
-          console.log(translateY.value);
         }}
       >
         <Text>Toggle</Text>

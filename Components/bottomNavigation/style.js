@@ -6,7 +6,7 @@ import {
   bottomBarHeight,
   bottomBarWidth
 } from "./constant.js";
-console.log(sizeIconContainer, iconBlock, activeIndex);
+
 
 const styles = StyleSheet.create({
   bottomTabContainer: {

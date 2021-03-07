@@ -6,7 +6,7 @@ import DarkMode from "../Screens/darkMode";
 import FlatlistAnimation from "../Screens/FlatlistAnimation/FlatlistAnimation";
 import BottomBarTapPress from "../Screens/bottomBarTapPress";
 import Skeleton from "../Screens/Skeleton";
-
+import StickyButton from "../Screens/StickyButton";
 const Data = [
   { title: "BottomSheet", screen: BottomSheet },
   { title: "Accordion", screen: AccordionExample },
@@ -16,6 +16,7 @@ const Data = [
   { title: "Flatlist Animation", screen: FlatlistAnimation },
   { title: "Bottom bar tap press Animation", screen: BottomBarTapPress },
   { title: "Skeleton loading", screen: Skeleton },
+  { title: "StickyButton", screen: StickyButton },
 ];
 
 export default Data;

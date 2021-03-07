@@ -40,7 +40,7 @@ const Accordion = (props) => {
   });
 
   const rotateZ = useDerivedValue(() => {
-    return accordionOpen.value ? `${Math.PI} deg` : "0 deg";
+    return accordionOpen.value ? `${Math.PI} rad` : "0 rad";
   });
   const animateIcon = useAnimatedStyle(() => {
     return {
