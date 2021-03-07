@@ -1,55 +1,76 @@
 import React, { useState } from "react";
-import { View, Text, Animated } from "react-native";
-import styles from "./style";
+import { View, Text } from "react-native";
+import styles, { swipeContainerWidth, paddingBox } from "./style";
 import { Feather } from "@expo/vector-icons";
 import { lorem } from "../../Constants/constant";
-import Swipe from "react-native-gesture-handler/Swipeable";
+import Animated, {
+  useSharedValue,
+  withSpring,
+  useAnimatedStyle,
+  useAnimatedGestureHandler,
+  interpolate,
+} from "react-native-reanimated";
+import { PanGestureHandler } from "react-native-gesture-handler";
 
 const Swipeable = () => {
+  const translationX = useSharedValue(0);
+  const getSpringConfig = (velocity) => {
+    "worklet";
+    return {
+      stiffness: 500,
+      damping: 100,
+      mass: 10,
+      overshootClamping: true,
+      restDisplacementThreshold: 0.01,
+      restSpeedThreshold: 0.01,
+      velocity,
+    };
+  };
+  const handler = useAnimatedGestureHandler({
+    onStart: (evt, ctx) => {
+      ctx.startX = translationX.value;
+    },
+    onActive: (evt, ctx) => {
+      const newTranlation = ctx.startX + evt.translationX;
+      translationX.value = newTranlation;
+    },
+    onEnd: (evt, ctx) => {
+      if (evt.velocityX > 100) {
+        translationX.value = withSpring(
+          swipeContainerWidth + paddingBox,
+          getSpringConfig(evt.velocityX)
+        );
+      } else {
+        translationX.value = withSpring(0, getSpringConfig(evt.velocityX));
+      }
+    },
+  });
+  const swipeContainerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: translationX.value,
+        },
+      ],
+    };
+  });
   return (
-    <View style={{marginVertical:10,overflow:'hidden'}}>
-      <Swipe
-        renderLeftActions={(progress, dragX) => (
-          <RenderLeftActions progress={progress} dragX={dragX} />
-        )}
-      >
-        <Animated.View style={[styles.box]}>
+    <PanGestureHandler activeOffsetX={[-20, 20]} onGestureEvent={handler}>
+      <Animated.View style={[styles.rowContainer, swipeContainerStyle]}>
+        <View style={[styles.box]}>
           <Text style={{ fontSize: 22 }} numberOfLines={3}>
             {lorem}
           </Text>
-        </Animated.View>
-      </Swipe>
-    </View>
+        </View>
+        <RenderLeftActions />
+      </Animated.View>
+    </PanGestureHandler>
   );
 };
 
 const RenderLeftActions = (props) => {
-  let { progress, dragX } = props;
-  const inputRange = [-0, 0, 65];
-  const scale = dragX.interpolate({
-    inputRange: inputRange,
-    outputRange: [0, 0, 1],
-    extrapolate: "clamp",
-  });
-  const translateX = dragX.interpolate({
-    inputRange: inputRange,
-    outputRange: [
-      -styles.renderContainer.width,
-      styles.renderContainer.width,
-      0,
-    ],
-    extrapolate: "clamp",
-  });
-
   return (
-    <Animated.View
-      style={[
-        styles.renderContainer,
-        {
-          transform: [{ scale: scale }, { translateX: translateX }],
-        },
-      ]}
-    >
+    <Animated.View style={[styles.renderContainer]}>
       <Animated.View style={styles.circleButton}>
         <Feather name="send" size={24} color="black" />
       </Animated.View>
