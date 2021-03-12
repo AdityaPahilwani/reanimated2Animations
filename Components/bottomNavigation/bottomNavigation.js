@@ -37,10 +37,7 @@ const BottomNavigationTapPress = (props) => {
               iconBlock / 2 -
               sizeIconContainer / 2,
             {
-              damping: 10,
-              mass: 1,
-              stiffness: 100,
-              velocity: 2,
+              config,
             }
           ),
         },
@@ -120,7 +117,10 @@ const BottomNavigationTapPress = (props) => {
       >
         {icons.map((item, index) => {
           return (
-            <View style={styles.itemContainer} key={`${item.name} unique unique unique `}>
+            <View
+              style={styles.itemContainer}
+              key={`${item.name} unique unique unique `}
+            >
               <Animated.View
                 style={[styles.iconContainer, animateIconContainer({ index })]}
               >

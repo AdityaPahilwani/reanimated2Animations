@@ -7,6 +7,7 @@ import FlatlistAnimation from "../Screens/FlatlistAnimation/FlatlistAnimation";
 import BottomBarTapPress from "../Screens/bottomBarTapPress";
 import Skeleton from "../Screens/Skeleton";
 import StickyButton from "../Screens/StickyButton";
+import Switch from "../Screens/Switch";
 const Data = [
   { title: "BottomSheet", screen: BottomSheet },
   { title: "Accordion", screen: AccordionExample },
@@ -17,6 +18,7 @@ const Data = [
   { title: "Bottom bar tap press Animation", screen: BottomBarTapPress },
   { title: "Skeleton loading", screen: Skeleton },
   { title: "StickyButton", screen: StickyButton },
+  { title: "Animated Switch", screen: Switch },
 ];
 
 export default Data;
