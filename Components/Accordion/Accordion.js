@@ -18,11 +18,7 @@ const Accordion = (props) => {
   const accordionBodyHeight = useSharedValue(0);
   const accordionOpen = useSharedValue(0);
   const toAccordionHeight = useDerivedValue(() => {
-    if (!accordionOpen.value) {
-      return 1;
-    } else {
-      return accordionBodyHeight.value;
-    }
+    return accordionOpen.value ? accordionBodyHeight.value : 1;
   });
   const animateContainer = useAnimatedStyle(() => {
     return {
@@ -34,8 +30,6 @@ const Accordion = (props) => {
         duration: 500,
         easing: Easing.ease,
       }),
-     
-      overflow: "hidden",
     };
   });
 
@@ -65,12 +59,6 @@ const Accordion = (props) => {
       <Animated.View style={[styles.card]}>
         <Pressable
           onPress={() => {
-            if (accordionBodyHeight.value === 0) {
-              runOnUI(() => {
-                "worklet";
-                accordionBodyHeight.value = measure(viewRef).height;
-              })();
-            }
             accordionOpen.value = !accordionOpen.value;
           }}
         >
@@ -88,9 +76,7 @@ const Accordion = (props) => {
         <View
           ref={viewRef}
           onLayout={(event) => {
-            var { height } = event.nativeEvent.layout;
-
-            accordionBodyHeight.value = height;
+            accordionBodyHeight.value = event.nativeEvent.layout.height;
           }}
         >
           <Text style={styles.innerText}>Select 1</Text>

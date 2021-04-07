@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     fontSize: 26,
   },
   accordionBody: {
-    
+    overflow: "hidden",
     alignItems: "flex-start",
     paddingHorizontal: 10,
   },
