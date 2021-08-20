@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Pressable, Dimensions } from "react-native";
+import { View, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import styles from "./style";
 import Animated, {
@@ -10,8 +10,8 @@ import Animated, {
   Easing,
 } from "react-native-reanimated";
 import {
-  sizeIconContainer,
-  iconBlock,
+  tabBlock,
+  iconContainer,
   activeIndex,
   icons,
   bottomBarHeight,
@@ -33,9 +33,7 @@ const BottomNavigationTapPress = (props) => {
       transform: [
         {
           translateX: withSpring(
-            selectedIndex.value * iconBlock +
-              iconBlock / 2 -
-              sizeIconContainer / 2,
+            selectedIndex.value * tabBlock + tabBlock / 2 - iconContainer / 2,
             {
               config,
             }
@@ -89,7 +87,7 @@ const BottomNavigationTapPress = (props) => {
                 selectedIndex.value = index;
               }}
             >
-              <View style={[styles.itemContainer, { overflow: "hidden" }]}>
+              <View style={[styles.tabContainer, { overflow: "hidden" }]}>
                 <Animated.View
                   style={[
                     styles.iconContainer,
@@ -118,7 +116,7 @@ const BottomNavigationTapPress = (props) => {
         {icons.map((item, index) => {
           return (
             <View
-              style={styles.itemContainer}
+              style={styles.tabContainer}
               key={`${item.name} unique unique unique `}
             >
               <Animated.View

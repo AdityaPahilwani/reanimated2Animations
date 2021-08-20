@@ -1,8 +1,7 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 import {
-  sizeIconContainer,
-  iconBlock,
-  activeIndex,
+  iconContainer,
+  tabBlock,
   bottomBarHeight,
   bottomBarWidth
 } from "./constant.js";
@@ -17,30 +16,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  itemContainer: {
+  tabContainer: {
     height: "100%",
-    width: iconBlock,
+    width: tabBlock,
     justifyContent: "center",
     alignItems: "center",
   },
   iconContainer: {
-    height: sizeIconContainer,
+    height: iconContainer,
     justifyContent: "center",
     alignItems: "center",
-    width: sizeIconContainer,
-    borderRadius: sizeIconContainer / 2,
+    width: iconContainer,
+    borderRadius: iconContainer / 2,
   },
   selectedContainer: {
     overflow: "hidden",
-    height: sizeIconContainer,
+    height: iconContainer,
     justifyContent: "center",
     alignItems: "center",
-    width: sizeIconContainer,
-    borderRadius: sizeIconContainer / 2,
-    backgroundColor: "red",
+    width: iconContainer,
+    borderRadius: iconContainer / 2,
     position: "absolute",
-    bottom: bottomBarHeight / 2 - sizeIconContainer / 2,
+    bottom: bottomBarHeight / 2 - iconContainer / 2,
     left: 0,
+    backgroundColor:"#28c7fa"
   },
 });
 

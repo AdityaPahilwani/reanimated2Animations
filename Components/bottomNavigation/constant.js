@@ -6,8 +6,8 @@ export const icons = [
   { name: "search", color: "#22eaaa" },
   { name: "user", color: "#ffd717" },
 ];
-export const sizeIconContainer = 50;
-export const iconBlock = width / icons.length;
+export const iconContainer = 50;
+export const tabBlock = width / icons.length;
 export const activeIndex = 0;
-export const bottomBarHeight = 70
-export const bottomBarWidth=width
+export const bottomBarHeight = 70;
+export const bottomBarWidth = width;
