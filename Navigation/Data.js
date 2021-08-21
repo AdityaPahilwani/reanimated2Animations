@@ -8,6 +8,7 @@ import BottomBarTapPress from "../Screens/bottomBarTapPress";
 import Skeleton from "../Screens/Skeleton";
 import StickyButton from "../Screens/StickyButton";
 import Switch from "../Screens/Switch";
+import SlideToCompare from "../Screens/SlideToCompare";
 const Data = [
   { title: "BottomSheet", screen: BottomSheet },
   { title: "Accordion", screen: AccordionExample },
@@ -19,6 +20,7 @@ const Data = [
   { title: "Skeleton loading", screen: Skeleton },
   { title: "StickyButton", screen: StickyButton },
   { title: "Animated Switch", screen: Switch },
+  { title: "SlideToCompare", screen: SlideToCompare },
 ];
 
 export default Data;
