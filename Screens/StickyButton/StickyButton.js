@@ -6,7 +6,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { useHeaderHeight } from "@react-navigation/stack";
+import { useHeaderHeight } from "@react-navigation/elements";
 import { lorem } from "../../Constants/constant";
 import styles, { bottomDistance } from "./style";
 
