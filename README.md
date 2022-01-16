@@ -8,7 +8,10 @@
   <!-- Web -->
 </p>
 
-Experiment with Reanimated 2 (rc) in SDK 40.
+Experiment with Reanimated 2
+
+## Check the demo app here
+https://expo.dev/@aditya_pahilwani/reanimated2trial
 
 ## 🚀 How to use
 
