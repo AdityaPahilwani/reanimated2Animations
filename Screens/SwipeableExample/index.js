@@ -1,22 +1,19 @@
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import Swipeable from "../../Components/Swipeable/index";
-import React from "react";
+import { dataArr } from '../../Constants/Data'
+
 const SwipeableExample = () => {
+  const [data, setData] = useState(dataArr)
   return (
     <ScrollView
       contentContainerStyle={{
         flexGrow: 1,
-        paddingHorizontal: 10,
       }}
     >
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
-      <Swipeable />
+      {data.map((item, index) => (
+        <Swipeable key={item} index={index} setData={setData} />
+      ))}
     </ScrollView>
   );
 };

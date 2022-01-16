@@ -1,19 +1,36 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
-import styles, { swipeContainerWidth, paddingBox } from "./style";
-import { Feather } from "@expo/vector-icons";
+import { View, Text, Pressable } from "react-native";
+import styles, { swipeContainerWidth, widthItem } from "./style";
+import { AntDesign } from "@expo/vector-icons";
 import { lorem } from "../../Constants/constant";
 import Animated, {
   useSharedValue,
   withSpring,
+  withTiming,
   useAnimatedStyle,
   useAnimatedGestureHandler,
-  interpolate,
+  runOnJS,
+  Easing
 } from "react-native-reanimated";
-import { PanGestureHandler } from "react-native-gesture-handler";
+import { PanGestureHandler, RectButton } from "react-native-gesture-handler";
 
-const Swipeable = () => {
+const Swipeable = ({ index, setData }) => {
   const translationX = useSharedValue(0);
+  const deletingItem = useSharedValue(false);
+  const timingConfig = {
+    duration: 400,
+    easing: Easing.in
+  };
+  const removeItem = () => {
+    setData((data) => {
+      const temp = data.filter((item, i) => {
+        if (index !== i) {
+          return item
+        }
+      })
+      return [...temp]
+    })
+  }
   const getSpringConfig = (velocity) => {
     "worklet";
     return {
@@ -35,9 +52,10 @@ const Swipeable = () => {
       translationX.value = newTranlation;
     },
     onEnd: (evt, ctx) => {
-      if (evt.velocityX > 100) {
+      console.log(translationX.value, ctx.startX, translationX.value > swipeContainerWidth)
+      if (evt.velocityX > 100 || translationX.value > swipeContainerWidth) {
         translationX.value = withSpring(
-          swipeContainerWidth + paddingBox,
+          swipeContainerWidth,
           getSpringConfig(evt.velocityX)
         );
       } else {
@@ -45,7 +63,7 @@ const Swipeable = () => {
       }
     },
   });
-  const swipeContainerStyle = useAnimatedStyle(() => {
+  const textContainerStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
@@ -54,28 +72,53 @@ const Swipeable = () => {
       ],
     };
   });
+
+  const swipeContainerStyle = useAnimatedStyle(() => {
+    if (deletingItem.value) {
+      return {
+        height: withTiming(0, timingConfig, () => {
+          runOnJS(removeItem)()
+        }),
+        flexDirection: 'row',
+      };
+    }
+
+    return {
+      height: 100,
+      flexDirection: 'row',
+    }
+  });
+  const RenderLeftActions = (props) => {
+    return (
+      <RectButton onPress={() => {
+        deletingItem.value = true
+      }}
+        style={styles.renderContainer}
+      >
+        <Animated.View style={[swipeContainerStyle, { justifyContent: 'center', alignItems: 'center' }]}>
+          <View style={styles.circleButton}>
+            <AntDesign name="delete" size={24} color="black" />
+          </View>
+        </Animated.View>
+      </RectButton>
+    );
+  };
   return (
-    <PanGestureHandler activeOffsetX={[-20, 20]} onGestureEvent={handler}>
-      <Animated.View style={[styles.rowContainer, swipeContainerStyle]}>
-        <View style={[styles.box]}>
-          <Text style={{ fontSize: 22 }} numberOfLines={3}>
-            {lorem}
-          </Text>
-        </View>
-        <RenderLeftActions />
-      </Animated.View>
-    </PanGestureHandler>
+    <View style={[styles.rowContainer]}>
+      <PanGestureHandler activeOffsetX={[-10, 10]} onGestureEvent={handler}>
+        <Animated.View style={[swipeContainerStyle]}>
+          <RenderLeftActions />
+          <Animated.View style={[styles.box, textContainerStyle]}>
+            <Text style={{ fontSize: 22 }} numberOfLines={3}>
+              {lorem}
+            </Text>
+          </Animated.View>
+        </Animated.View>
+      </PanGestureHandler>
+    </View >
   );
 };
 
-const RenderLeftActions = (props) => {
-  return (
-    <Animated.View style={[styles.renderContainer]}>
-      <Animated.View style={styles.circleButton}>
-        <Feather name="send" size={24} color="black" />
-      </Animated.View>
-    </Animated.View>
-  );
-};
+
 
 export default Swipeable;

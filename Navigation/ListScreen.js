@@ -1,6 +1,7 @@
 import React from "react";
 import Data from "./Data";
 import { FlatList, Pressable, Text, StyleSheet } from "react-native";
+import { RectButton } from 'react-native-gesture-handler';
 
 const ListScreens = (props) => {
   return (
@@ -11,14 +12,14 @@ const ListScreens = (props) => {
       showsVerticalScrollIndicator={false}
       renderItem={({ item, index }) => {
         return (
-          <Pressable
+          <RectButton
             style={styles.button}
             onPress={() => {
               props.navigation.navigate(item.title);
             }}
           >
             <Text style={styles.buttonText}>{item.title}</Text>
-          </Pressable>
+          </RectButton>
         );
       }}
     />
@@ -30,9 +31,9 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    borderRadius:10,
+    borderRadius: 10,
     padding: 10,
-    marginVertical:5,
+    marginVertical: 5,
     backgroundColor: "white",
     elevation: 4,
     shadowColor: "#000",

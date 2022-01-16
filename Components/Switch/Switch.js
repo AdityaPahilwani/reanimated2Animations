@@ -30,9 +30,7 @@ const Switch = (props) => {
   const animateContainer = useAnimatedStyle(() => {
     const backgroundColor = toggleSwitch.value ? "#78fee0" : "white";
     return {
-      backgroundColor: withTiming(backgroundColor, {
-        config,
-      }),
+      backgroundColor: backgroundColor
     };
   });
   const handleToggle = () => {

@@ -17,4 +17,6 @@ const DATA = temp.map((data, index) => ({
   title: `Title ${index + 1}`,
   description: "It is a long established fact that a reader will be distracted",
 }));
+
+export const dataArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 export const data = DATA;

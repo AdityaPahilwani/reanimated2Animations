@@ -32,5 +32,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: iconContainerSize / 2,
     overflow: "hidden",
+    backgroundColor: 'grey'
   },
 });

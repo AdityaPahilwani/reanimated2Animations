@@ -1,10 +1,10 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("window");
-const containerPadding = 20;
-const switchPadding = 10;
-const switchHeight = 80;
-const switchContainerSize = width - containerPadding * 2;
+const containerPadding = 1;
+const switchPadding = 5;
+const switchHeight = 30;
+const switchContainerSize = 50 - containerPadding * 2;
 export const switchSize = switchHeight - switchPadding * 2;
 export const maxWidthSwitch = switchContainerSize - switchPadding * 2;
 

@@ -5,12 +5,10 @@ import Animated, {
   useAnimatedStyle,
 } from "react-native-reanimated";
 import { Image, View, Dimensions, StyleSheet, Text } from "react-native";
-import { BlurView } from "expo-blur";
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 const { width } = Dimensions.get("window");
 const imageHeight = 400;
-const imageWidth = 300;
-const marginW = 10;
+const imageWidth = width - 100;
+const marginW = 5;
 export const remainingSpace = width - imageWidth - marginW * 2;
 export const snapToInterval = imageWidth + marginW * 2;
 

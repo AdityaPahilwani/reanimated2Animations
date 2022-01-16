@@ -14,7 +14,8 @@ const Data = [
   { title: "Accordion", screen: AccordionExample },
   { title: "Swipeable", screen: SwipeableExample },
   { title: "ClassicIpod", screen: ClassicIpod },
-  { title: "DarkMode", screen: DarkMode },
+  // Interpolating color not working now
+  // { title: "DarkMode", screen: DarkMode },
   { title: "Flatlist Animation", screen: FlatlistAnimation },
   { title: "Bottom bar tap press Animation", screen: BottomBarTapPress },
   { title: "Skeleton loading", screen: Skeleton },

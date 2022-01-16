@@ -9,7 +9,6 @@ import { View, Text, Pressable, Dimensions, ScrollView } from "react-native";
 import styles from "./style";
 import { lorem } from "../../Constants/constant";
 const DarkMode = () => {
-  const { height, width } = Dimensions.get("window");
   const isDarkMode = useSharedValue(false);
   const time = 700;
   const animateContainer = useAnimatedStyle(() => {

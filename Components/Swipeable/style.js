@@ -1,40 +1,34 @@
-import { StyleSheet } from "react-native";
-
-export const paddingBox = 10;
+import { StyleSheet, Dimensions } from "react-native";
+export const widthItem = Dimensions.get('window').width
 export const swipeContainerWidth = 70;
 const styles = StyleSheet.create({
   rowContainer: {
-    marginVertical: 10,
-    
-    flexDirection: "row",
-    height: 100,
     backgroundColor: "white",
-    borderRadius: 10,
+    borderBottomWidth: 1
   },
   box: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "white",
-    elevation: 4,
-    borderRadius: 10,
-    padding: 10,
-    overflow: "hidden",
+    position: 'absolute',
+    top: 0,
+    height: '100%',
+    width: widthItem,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    paddingHorizontal: 10
   },
-
   renderContainer: {
-    position: "absolute",
-    left: -swipeContainerWidth-paddingBox,
-    height: 100,
-    width: swipeContainerWidth,
-    padding: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'red',
+    position: 'absolute',
+    top: 0,
+    height: '100%',
+    width: widthItem,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingLeft: 10,
   },
   circleButton: {
     height: 50,
     width: 50,
     borderRadius: 25,
-    elevation: 5,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",

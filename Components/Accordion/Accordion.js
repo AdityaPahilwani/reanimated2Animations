@@ -2,11 +2,13 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
+  withSpring,
   Easing,
   runOnUI,
   useAnimatedRef,
   measure,
   useDerivedValue,
+  processColor,
 } from "react-native-reanimated";
 import { View, Text, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
@@ -23,34 +25,26 @@ const Accordion = (props) => {
   const animateContainer = useAnimatedStyle(() => {
     return {
       height: withTiming(toAccordionHeight.value, {
-        duration: 500,
-        easing: Easing.ease,
-      }),
-      marginTop: withTiming(accordionOpen.value ? 10 : 0, {
-        duration: 500,
-        easing: Easing.ease,
+        duration: 200,
+        easing: Easing.linear,
       }),
     };
   });
 
-  const rotateZ = useDerivedValue(() => {
-    return accordionOpen.value ? `${Math.PI} rad` : "0 rad";
-  });
+
   const animateIcon = useAnimatedStyle(() => {
+    const color = accordionOpen.value ? 'rgba(5,200,3, 1)' : 'grey'
     return {
       transform: [
         {
-          rotateZ: withTiming(rotateZ.value, {
+          rotateZ: withTiming(accordionOpen.value ? `${Math.PI * 1} rad` : "0 rad", {
             duration: 500,
             easing: Easing.linear,
           }),
         },
       ],
-      backgroundColor: withTiming(accordionOpen.value ? "#4fc1e9" : "#12e2a3", {
-        duration: 500,
-        easing: Easing.linear,
-      }),
-    };
+      backgroundColor: color
+    }
   });
   const viewRef = useAnimatedRef();
 
